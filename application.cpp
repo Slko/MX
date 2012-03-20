@@ -157,7 +157,6 @@ Application::Application()
 	player = NULL;
 	graphics = NULL;
 	selection = NULL;
-	quit = false;
 }
 
 void Application::step()

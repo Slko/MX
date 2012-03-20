@@ -29,6 +29,7 @@ public:
 	SDLSurface *get_screen();
 	void flip();
 	void game_loop(GameLoop *game);
+	void stop();
 	void close();
 	~SDLGraphics();
 };

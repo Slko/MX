@@ -15,7 +15,6 @@ protected:
 	Map *wall_map;
 	Map *ground_map;
 	TileRenderer *tiler;
-	bool quit;
 
 	Surface *generate_minimap(Map *map);
 	Map *generate_map(int width,int height);

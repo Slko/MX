@@ -82,6 +82,11 @@ void SDLGraphics::game_loop(GameLoop *game)
 	}
 }
 
+void SDLGraphics::stop()
+{
+	quit = true;
+}
+
 void SDLGraphics::close()
 {
 	SDL_Quit();
