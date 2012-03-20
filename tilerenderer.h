@@ -5,9 +5,12 @@
 #include "config.h"
 #include "map.h"
 
-#define TILE_NONE 0
-#define TILE_BASIC_GROUND 1
-#define TILE_WALL 2
+enum TileTypes
+{
+	TILE_NONE,
+	TILE_BASIC_GROUND,
+	TILE_WALL,
+};
 
 class TileRenderer
 {
