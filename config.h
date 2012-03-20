@@ -5,6 +5,6 @@
 #ifdef USE_SDL
 #	include "sdlsurface.h"
 #	include "sdlgraphics.h"
-#	define Graphics SDLGraphics
-#	define Surface SDLSurface
+	typedef SDLGraphics Graphics;
+	typedef SDLSurface Surface;
 #endif
