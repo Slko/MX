@@ -167,7 +167,6 @@ void Application::step()
 	screen->blit(minimap,0,0);
 	std::pair<int,int> tile = tiler->to_tile(graphics->get_mouse_x(),graphics->get_mouse_y());
 	std::pair<int,int> screen_pos = tiler->to_screen(tile.first,tile.second);
-	Log << tile.first << " " << tile.second << "\n";
 	screen->blit(selection,screen_pos.first,screen_pos.second);
 }
 
