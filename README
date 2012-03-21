@@ -1,3 +1,5 @@
+compilation on posix-compatible systems with g++:
+g++ *.cpp -lSDL -lSDL_image -std=c++0x -o ./MX
 requirements:
 SDL
 SDL_image

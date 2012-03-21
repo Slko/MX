@@ -49,7 +49,7 @@ Map *Application::generate_map(int width,int height)
 	Map *map = new Map(maze_width,maze_height,TILE_WALL);
 	map->set(exit.first,exit.second,TILE_NONE);
 	stack.push(std::pair<int,int>(exit.first,exit.second));
-	unsigned int max_stack = 0;
+	size_t max_stack = 0;
 	while(!stack.empty())
 	{
 		std::pair<int,int> pos = stack.top();

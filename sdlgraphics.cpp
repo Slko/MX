@@ -36,8 +36,8 @@ int SDLGraphics::get_mouse_y()
 bool SDLGraphics::set_video_mode(int width, int height, int bpp, bool fullscreen, bool hw)
 {
 	Log << "Setting video mode... ";
-	SDL_Surface *screen_surface = SDL_SetVideoMode(width,height,bpp,SDL_DOUBLEBUF | (hw?SDL_HWSURFACE:0) | (fullscreen?SDL_FULLSCREEN:0));
-	if(screen == NULL)
+	SDL_Surface *screen_surface = SDL_SetVideoMode(width,height,bpp,SDL_DOUBLEBUF | (hw?SDL_HWSURFACE:SDL_SWSURFACE) | (fullscreen?SDL_FULLSCREEN:0));
+	if(screen_surface == NULL)
 	{
 		Log << "failed: unable to set video mode " << width << "x" << height << "x" << bpp << ", " << (fullscreen?"fullscreen":"windowed") << (hw?", hardware-accelerated":"") << "\n";
 		return false;
