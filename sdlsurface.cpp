@@ -114,18 +114,18 @@ bool SDLSurface::get_failed()
 void SDLSurface::fill_rect(int x, int y, int width, int height, Color color)
 {
 	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = width;
-	rect.h = height;
+	rect.x = (Sint16)x;
+	rect.y = (Sint16)y;
+	rect.w = (Uint16)width;
+	rect.h = (Uint16)height;
 	SDL_FillRect(surface,&rect,color);
 }
 
 void SDLSurface::blit(SDLSurface *surface, int x, int y)
 {
 	SDL_Rect pos;
-	pos.x = x;
-	pos.y = y;
+	pos.x = (Sint16)x;
+	pos.y = (Sint16)y;
 	SDL_BlitSurface(surface->surface,0,this->surface,&pos);
 }
 

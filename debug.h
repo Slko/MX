@@ -13,7 +13,7 @@ template <typename T>
 nullstream & operator<<(nullstream & o, T const & x){return o;}
 
 #ifdef _DEBUG
-	extern std::ostream Log;
+	extern std::ostream &Log;
 #elif defined(NO_DEBUG)
 	extern nullstream Log;
 #else
