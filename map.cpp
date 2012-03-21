@@ -1,8 +1,8 @@
 #include "map.h"
 
-Map::Map(int width, int height,char fill)
+Map::Map(int width, int height, unsigned char fill)
 {
-	data = new char[width*height];
+	data = new unsigned char[width*height];
 	std::memset(data,fill,width*height);
 	this->width = width;
 	this->height = height;
@@ -10,18 +10,18 @@ Map::Map(int width, int height,char fill)
 
 Map::Map(Map &map)
 {
-	this->data = new char[map.width*map.height];
+	this->data = new unsigned char[map.width*map.height];
 	std::memcpy(data,map.data,map.width*map.height);
 	width = map.width;
 	height = map.height;
 }
 
-void Map::fill(char value)
+void Map::fill(unsigned char value)
 {
 	std::memset(data,value,width*height);
 }
 
-void Map::replace(char value_old,char value_new)
+void Map::replace(unsigned char value_old, unsigned char value_new)
 {
 	for(int y=0;y<height;y++)
 	{
@@ -35,12 +35,12 @@ void Map::replace(char value_old,char value_new)
 	}
 }
 
-void Map::set(int x, int y, char value)
+void Map::set(int x, int y, unsigned char value)
 {
 	data[x+y*width] = value;
 }
 
-char Map::get(int x, int y)
+unsigned char Map::get(int x, int y)
 {
 	return data[x+y*width];
 }

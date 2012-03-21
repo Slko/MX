@@ -47,7 +47,7 @@ void TileRenderer::render()
 		{
 			for(int x=level_width-1;x>=0;x--)
 			{
-				char type_id = (*it)->get(x,y);
+				unsigned char type_id = (*it)->get(x,y);
 				Surface *current_tile = tile_types[type_id];
 				if(current_tile != NULL)
 				{

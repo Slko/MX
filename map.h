@@ -6,16 +6,16 @@
 class Map
 {
 protected:
-	char *data;
+	unsigned char *data;
 	int width;
 	int height;
 public:
-	Map(int width, int height,char fill = 0);
+	Map(int width, int height, unsigned char fill = 0);
 	Map(Map &map);
-	void fill(char value);
-	void replace(char value_old,char value_new);
-	void set(int x, int y, char value);
-	char get(int x, int y);
+	void fill(unsigned char value);
+	void replace(unsigned char value_old, unsigned char value_new);
+	void set(int x, int y, unsigned char value);
+	unsigned char get(int x, int y);
 	int get_width();
 	int get_height();
 	~Map();
