@@ -11,10 +11,11 @@ protected:
 	int width;
 	int height;
 	bool failed;
+	bool free_on_delete;
 public:
 	SDLSurface(int width, int height);
 	SDLSurface(const char *filename, bool use_key=false, Color color_key=0xFF80FF);
-	SDLSurface(SDL_Surface *surface);
+	SDLSurface(SDL_Surface *surface,bool free_on_delete=true);
 	void lock();
 	void unlock();
 	void set_pixel(int x, int y, Color color);

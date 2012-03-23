@@ -6,6 +6,8 @@ Map::Map(int width, int height, unsigned char fill)
 	std::memset(data,fill,width*height);
 	this->width = width;
 	this->height = height;
+	exit_x = 0;
+	exit_y = 0;
 }
 
 Map::Map(Map &map)
@@ -14,6 +16,19 @@ Map::Map(Map &map)
 	std::memcpy(data,map.data,map.width*map.height);
 	width = map.width;
 	height = map.height;
+	exit_x = 0;
+	exit_y = 0;
+}
+
+void Map::set_exit(int x, int y)
+{
+	exit_x = x;
+	exit_y = y;
+}
+
+std::pair<int,int> Map::get_exit()
+{
+	return std::make_pair(exit_x,exit_y);
 }
 
 void Map::fill(unsigned char value)

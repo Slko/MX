@@ -15,13 +15,15 @@ TileRenderer::TileRenderer(Graphics *graphics, std::vector<Map*> &levels)
 	tile_types[TILE_WALL] = wall_tile;
 	camera_x = 0;
 	camera_y = 300;
+	player_x = 0;
+	player_y = 0;
 }
 
-std::pair<int,int> TileRenderer::to_screen(int x, int y)
+std::pair<int,int> TileRenderer::to_screen(float x, float y)
 {
 	std::pair<int,int> pos;	
-	pos.first = camera_x+x*tile_width/2+y*tile_width/2;
-	pos.second = camera_y+y*tile_height/2-x*tile_height/2;
+	pos.first = (int)(camera_x+x*tile_width/2+y*tile_width/2);
+	pos.second = (int)(camera_y+y*tile_height/2-x*tile_height/2);
 	return pos;
 }
 

@@ -17,6 +17,7 @@ SDLSurface::SDLSurface(int width, int height)
 	}
 	this->width = width;
 	this->height = height;
+	free_on_delete = true;
 }
 
 SDLSurface::SDLSurface(const char *filename, bool use_key, Color color_key)
@@ -25,6 +26,7 @@ SDLSurface::SDLSurface(const char *filename, bool use_key, Color color_key)
 	SDL_Surface *loadedImage;
 	SDL_Surface *optimizedImage;
 	loadedImage = IMG_Load(filename);
+	free_on_delete = true;
 	if(loadedImage != NULL)
 	{
 		optimizedImage = SDL_DisplayFormat(loadedImage);
@@ -60,8 +62,9 @@ SDLSurface::SDLSurface(const char *filename, bool use_key, Color color_key)
 	}
 }
 
-SDLSurface::SDLSurface(SDL_Surface *surface)
+SDLSurface::SDLSurface(SDL_Surface *surface,bool free_on_delete)
 {
+	this->free_on_delete = free_on_delete;
 	this->surface = surface;
 	width = surface->w;
 	height = surface->h;
@@ -136,5 +139,12 @@ SDL_Surface *SDLSurface::get_surface()
 
 SDLSurface::~SDLSurface()
 {
-	SAFE_DELETE_SPECIAL(surface,SDL_FreeSurface);
+	if(free_on_delete)
+	{
+		SAFE_DELETE_SPECIAL(surface,SDL_FreeSurface);
+	}
+	else
+	{
+		surface = NULL;
+	}
 }

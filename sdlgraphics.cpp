@@ -44,7 +44,7 @@ bool SDLGraphics::set_video_mode(int width, int height, int bpp, bool fullscreen
 	}
 	else
 	{
-		screen = new SDLSurface(screen_surface);
+		screen = new SDLSurface(screen_surface,false);
 		Log << "ok\n";
 		return true;
 	}
@@ -89,6 +89,7 @@ void SDLGraphics::stop()
 
 void SDLGraphics::close()
 {
+	SAFE_DELETE(screen);
 	SDL_Quit();
 }
 

@@ -42,11 +42,10 @@ Map *Application::generate_map(int width,int height)
 	int maze_height = height*2;
 	unsigned int seed = (unsigned int)time(NULL);
 	srand(seed);
-	std::pair<int,int> exit;
-	exit.first = (rand()%(maze_width/2))*2;
-	exit.second = (rand()%(maze_height/2))*2;
+	std::pair<int,int> exit((rand()%(maze_width/2))*2,(rand()%(maze_height/2))*2);
 	std::stack< std::pair<int,int> > stack;
 	Map *map = new Map(maze_width,maze_height,TILE_WALL);
+	map->set_exit(exit.first,exit.second);
 	map->set(exit.first,exit.second,TILE_NONE);
 	stack.push(std::pair<int,int>(exit.first,exit.second));
 	size_t max_stack = 0;
@@ -137,10 +136,12 @@ void Application::load()
 	selection = new Surface("images/selection_tile.png",true);
 	Log << "\n";
 	Map *wall_map_small = generate_map(64,64);
+	std::pair<int,int> exit = wall_map_small->get_exit();
 	wall_map = resize_map(wall_map_small);
-	minimap = generate_minimap(wall_map);
 	SAFE_DELETE(wall_map_small);
+	minimap = generate_minimap(wall_map);
 	ground_map = new Map(64,64,TILE_BASIC_GROUND);
+	ground_map->set_exit(exit.first,exit.second);
 	std::vector<Map*> levels;
 	levels.push_back(ground_map);
 	levels.push_back(wall_map);
@@ -166,7 +167,7 @@ void Application::step()
 	tiler->render();
 	screen->blit(minimap,0,0);
 	std::pair<int,int> tile = tiler->to_tile(graphics->get_mouse_x(),graphics->get_mouse_y());
-	std::pair<int,int> screen_pos = tiler->to_screen(tile.first,tile.second);
+	std::pair<int,int> screen_pos = tiler->to_screen((float)tile.first,(float)tile.second);
 	screen->blit(selection,screen_pos.first,screen_pos.second);
 }
 
